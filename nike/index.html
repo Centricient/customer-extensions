@@ -22,9 +22,11 @@
       var json = JSON.parse(data);
 
       var container = document.getElementById('centLink');
-      container.innerHTML = 'https://domain.com/path/path/?ref-nokey='+json.Refno+'&loginkey='+json.AgentId
+      var link = 'https://domain.com/path/path/?ref-nokey='+json.Refno+'&loginkey='+json.AgentId
 
-      Centricient.prepareMessage(container.innerHTML);
+      container.innerHTML = link;
+
+      Centricient.prepareMessage(link);
     }
 
 
