@@ -1,7 +1,7 @@
 <html>
 <head>
 
-  <script type="text/javascript" src="sdk.js"></script>
+  <script type="text/javascript" src="https://raw.githubusercontent.com/Centricient/ui-extensions/master/sdk.js"></script>
 
 <head>
 
@@ -9,8 +9,24 @@
 
   <div>Nike VOC</div>
 
+  <div id='centLink'/>
+
+  <script>
+    Centricient.init('https://bill.dev.centricient.corp');
+
+    function generateLink(){
+      var data = Centricient.getExtensionData();
+
+      alert(data);
+    }
 
 
+
+
+
+  </script>
+
+  <input type='button' value='Generate VOC link' onclick='generateLink();' />
 
 </body>
 
