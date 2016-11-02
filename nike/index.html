@@ -17,12 +17,15 @@
     function generateLink(){
       var data = Centricient.getExtensionData();
 
+      data = '{"Version":"1.0.0","ContactId":6970,"Refno":"161102-000002","AgentId":"5466","LastUpdated":"2016-11-02T07:06:19.8598-06:00"}'
+
+      var json = JSON.parse(data);
+
       var container = document.getElementById('centLink');
-      container.innerHTML = data;
+      container.innerHTML = 'https://domain.com/path/path/?ref-nokey='+json.Refno+'&loginkey='+json.AgentId
+
+      Centricient.prepareMessage(container.innerHTML);
     }
-
-
-
 
 
   </script>
