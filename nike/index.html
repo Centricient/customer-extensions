@@ -5,32 +5,19 @@
 
   <body>
 
-    <h2>Nike VOC + 402</h2>
+    <h2>Nike VOC</h2>
 
     <div id='centLink'></div>
 
     <script>
-      Centricient.init('https://bill.dev.centricient.corp');
-
-      document.getElementById('vocButton').disabled = true;
-
-      Centricient.on('extensionDataChanged', function(data, conversationId, extensionId){
-        document.getElementById('centLink').innerHTML = "VOC link is ready";
-        document.getElementById('vocButton').disabled = false;
-      });
+      Centricient.init('https://nike.centricient.com');
 
       function generateLink(){
         var data = Centricient.getExtensionData();
-
-        data = '{"Version":"1.0.0","ContactId":6970,"Refno":"161102-000002","AgentId":"5466","LastUpdated":"2016-11-02T07:06:19.8598-06:00"}'
-
         var json = JSON.parse(data);
-        var link = 'https://domain.com/path/path/?ref-nokey='+json.Refno+'&loginkey='+json.AgentId
-
+        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login)+'&refid='+encodeURIComponent(json.Refno);
         Centricient.prepareMessage(link, 'append');
       }
-
-
     </script>
 
     <input type='button' value='Generate VOC link' onclick='generateLink();' id='vocButton'></input>
