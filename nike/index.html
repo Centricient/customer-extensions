@@ -7,17 +7,17 @@
 
     <h2>Nike VOC</h2>
 
-    <div id='centLink'></div>
-
     <script>
       Centricient.init('https://nike.centricient.com');
 
       function generateLink(){
         var data = Centricient.getExtensionData();
+        alert(data);
         var json = JSON.parse(data);
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login)+'&refid='+encodeURIComponent(json.Refno);
         Centricient.prepareMessage(link, 'append');
       }
+
     </script>
 
     <input type='button' value='Generate VOC link' onclick='generateLink();' id='vocButton'></input>
