@@ -17,12 +17,18 @@
         var json = JSON.parse(data);
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login)+'&refid='+encodeURIComponent(json.Refno);
         console.debug(link);
+        document.getElementById('centoutput').innerHTML = link;
         Centricient.prepareMessage(link, 'append');
       }
 
     </script>
 
     <input type='button' value='Generate VOC link' onclick='generateLink();' id='vocButton'></input>
+
+    <h2>Survey link</h2>
+    <div id='centoutput'>
+
+    </div>
 
   </body>
 
