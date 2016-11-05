@@ -13,11 +13,10 @@
 
       function generateLink(){
         var data = Centricient.getExtensionData();
-        console.log(data);
-        alert(data);
+        console.debug(data);
         var json = JSON.parse(data);
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login)+'&refid='+encodeURIComponent(json.Refno);
-        console.log(link);
+        console.debug(link);
         Centricient.prepareMessage(link, 'append');
       }
 
