@@ -16,7 +16,7 @@
         var json = JSON.parse(data);
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login)+'&refid='+encodeURIComponent(json.Refno);
         console.log(link);
-        Centricient.prepareMessage(link, 'append');
+        Centricient.prepareMessage(link);
       }
 
     </script>
