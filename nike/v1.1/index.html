@@ -15,8 +15,7 @@
       Centricient.init('https://bill.dev.centricient.corp');
 
       var extensionData = Centricient.getExtensionData();
-      alert(extensionData);
-      if(extensionData !== null) {
+      if(extensionData !== undefined) {
         populateLink(JSON.parse(extensionData));
       }
 
