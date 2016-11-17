@@ -25,7 +25,7 @@
 
       function populateLink(data){
         console.debug(data);
-        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login.toUpperCase())+'&refid='+encodeURIComponent(json.Refno);
+        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(data.Login.toUpperCase())+'&refid='+encodeURIComponent(data.Refno);
         console.debug(link);
         var message = 'Thank you for choosing Nike. We value your feedback: ' + link;
         Centricient.sendOnClose(message);
