@@ -1,25 +1,38 @@
 <html>
   <head>
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <script type="text/javascript" src="sdk.js"></script>
   <head>
 
   <body>
 
-    <h2>Nike VOC (v1.1)</h2>
+    <h2>Nike VoC</h2>
 
     <script>
       Centricient.init('https://bill.dev.centricient.corp');
 
+      var extensionData = Centricient.getExtensionData();
+      if(extensionData !== null) {
+        populateLink(JSON.parse(extensionData);
+      }
+
       Centricient.on('extensionDataChanged', function(data){
+        populateLink(JSON.parse(data.data));
+      });
+
+      function populateLink(data){
         console.debug(data);
-        var json = JSON.parse(data.data);
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login.toUpperCase())+'&refid='+encodeURIComponent(json.Refno);
         console.debug(link);
-        var message = 'Thank you for choosing Nike. We value your feedback: ' + link
+        var message = 'Thank you for choosing Nike. We value your feedback: ' + link;
         Centricient.sendOnClose(message);
-        document.getElementById('cent-notice').innerHTML = '<h3>VoC link ready</h3>The following message will be sent to the consumer when the conversation is closed:<p>' + message + '</p>';
-      });
+        document.getElementById('cent-notice').innerHTML =
+          '<h3>VoC link ready</h3>The following message will be sent to the consumer when the conversation is closed:<p>' + message + '</p>';
+      }
+
     </script>
 
     <div id='cent-notice'>
