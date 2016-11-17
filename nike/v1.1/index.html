@@ -16,7 +16,7 @@
 
       var extensionData = Centricient.getExtensionData();
       if(extensionData !== null) {
-        populateLink(JSON.parse(extensionData);
+        populateLink(JSON.parse(extensionData));
       }
 
       Centricient.on('extensionDataChanged', function(data){
