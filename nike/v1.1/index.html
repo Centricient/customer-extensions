@@ -17,8 +17,8 @@
         var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login.toUpperCase())+'&refid='+encodeURIComponent(json.Refno);
         console.debug(link);
         var message = 'Nike CS: Thank you for choosing Nike. We value your feedback: ' + link
-        Centricient.sendOnClose(link);
-        document.getElementById('cent-notice').innerHTML = 'VoC link ready. The following message will be sent to the consumer when the conversation is closed:<br/>' + message;
+        Centricient.sendOnClose(message);
+        document.getElementById('cent-notice').innerHTML = '<h3>VoC link ready</h3>The following message will be sent to the consumer when the conversation is closed:<p>' + message + '</p>';
       });
     </script>
 
