@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <script type="text/javascript" src="sdk.js"></script>
+  <head>
+
+  <body>
+
+    <h2>Nike VOC (v1.1)</h2>
+
+    <script>
+      Centricient.init('https://bill.dev.centricient.corp');
+
+      Centricient.on('extensionDataChanged', function(data){
+        console.debug(data);
+        var json = JSON.parse(data);
+        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(json.Login.toUpperCase())+'&refid='+encodeURIComponent(json.Refno);
+        console.debug(link);
+        Centricient.sendOnClose(link);
+        document.getElementById('cent-notice').innerHTML = 'VOC link ready<br/>'link;
+      });
+    </script>
+
+    <div id='cent-notice'>
+    </div>
+
+  </body>
+
+</html>
