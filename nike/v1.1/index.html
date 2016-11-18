@@ -15,10 +15,15 @@
     <script>
       Centricient.init('https://bill.dev.centricient.corp');
 
-      var extensionData = Centricient.getExtensionData();
-      if(extensionData !== undefined) {
-        populateLink(JSON.parse(extensionData));
-      }
+      Centricient.on('init', function(id, convo){
+        var extensionData = Centricient.getExtensionData();
+        if(extensionData) {
+          populateLink(JSON.parse(extensionData));
+        }
+        else{
+          document.getElementById('cent-notice').innerHTML = 'Error retrieving data';
+        }
+      });
 
       Centricient.on('extensionDataChanged', function(data){
         if(!data || !data.data){
