@@ -20,9 +20,9 @@
       }
 
       Centricient.on('extensionDataChanged', function(data){
-        alert(data);
-        alert(data.data);
-        populateLink(JSON.parse(data.data));
+        var json = JSON.parse(data.data);
+        alert(json);
+        populateLink(json);
       });
 
       function populateLink(data){
