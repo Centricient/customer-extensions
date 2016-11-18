@@ -25,10 +25,6 @@
         }
 
         var json = JSON.parse(data.data);
-        if(json === undefined){
-          alert('invalid json ' + data.data);
-        }
-
         populateLink(json);
       });
 
