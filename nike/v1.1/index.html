@@ -20,9 +20,11 @@
       }
 
       Centricient.on('extensionDataChanged', function(data){
-        if(data === undefined || data.data === undefined){
+        if(!data || !data.data){
           alert('data is null');
         }
+
+        alert(data.data);
 
         var json = JSON.parse(data.data);
         populateLink(json);
