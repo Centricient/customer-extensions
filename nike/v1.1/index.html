@@ -23,9 +23,12 @@
         if(data === undefined || data.data === undefined){
           alert('data is null');
         }
-        
+
         var json = JSON.parse(data.data);
-        alert(json);
+        if(json === undefined){
+          alert('invalid json ' + data.data);
+        }
+
         populateLink(json);
       });
 
