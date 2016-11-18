@@ -15,8 +15,8 @@
       Centricient.init('https://bill.dev.centricient.corp');
 
       var extensionData = Centricient.getExtensionData();
-      if(extensionData) {
-        populateLink(window.JSON.parse(extensionData));
+      if(extensionData !== undefined) {
+        populateLink(JSON.parse(extensionData));
       }
 
       Centricient.on('extensionDataChanged', function(data){
@@ -24,9 +24,9 @@
           alert('data is null');
         }
 
-        alert(window.JSON);
+        alert(JSON);
 
-        var json2 = window.JSON.parse(data.data);
+        var json2 = JSON.parse(data.data);
         populateLink(json2);
       });
 
@@ -39,8 +39,6 @@
         document.getElementById('cent-notice').innerHTML =
           '<h3>VoC link ready</h3>The following message will be sent to the consumer when the conversation is closed:<p>' + message + '</p>';
       }
-
-
 
     </script>
 
