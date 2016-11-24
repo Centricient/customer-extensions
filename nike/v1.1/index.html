@@ -13,6 +13,17 @@
     <h2>Nike VoC</h2>
 
     <script>
+
+      function convertToHex(str){
+        var outStr = '';
+
+        for(var i = 0, len = str.length; i < len; i++){
+          outStr += '%' + str.charCodeAt(i).toString(16);
+        }
+
+        return outStr;
+      }
+
       Centricient.init('https://nike.centricient.com');
 
       Centricient.on('init', function(data){
@@ -36,7 +47,7 @@
 
       function populateLink(data){
         console.debug(data);
-        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+encodeURIComponent(data.Login.toUpperCase())+'&refid='+encodeURIComponent(data.Refno);
+        var link = 'http://survey.medallia.com/nikecs-sms?athlete='+convertToHex(data.Login.toUpperCase())+'&refid='+encodeURIComponent(data.Refno);
         console.debug(link);
         var message = 'Thank you for choosing Nike. We value your feedback: ' + link;
         Centricient.sendOnClose(message);
