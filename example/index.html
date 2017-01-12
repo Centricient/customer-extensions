@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-Equiv="Cache-Control" Content="no-cache" />
+    <meta http-Equiv="Pragma" Content="no-cache" />
+    <meta http-Equiv="Expires" Content="0" />
+    <title>Centricient Addin</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700" rel="stylesheet">
+    <style type="text/css" media="screen">
+    @keyframes eventIn {
+      0% { opacity: 0; left: 10px; }
+      80% { opacity: 1; left: -3px; }
+      100% { opacity: 1; left: 0; }
+    }
+body, #mainDiv {
+  background: #ebeff0;
+  font-family: Roboto, sans-serif;
+}
+.bs-callout {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+    background: #fff;
+    position: relative;
+    animation: eventIn 0.3s 1;
+}
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+.bs-callout p:last-child {
+    margin-bottom: 0;
+}
+.bs-callout code {
+    border-radius: 3px;
+}
+.bs-callout+.bs-callout {
+    margin-top: -5px;
+}
+.bs-callout-default {
+    border-left-color: #777;
+}
+.bs-callout-default h4 {
+    color: #777;
+}
+.bs-callout-primary {
+    border-left-color: #428bca;
+}
+.bs-callout-primary h4 {
+    color: #428bca;
+}
+.bs-callout-success {
+    border-left-color: #5cb85c;
+}
+.bs-callout-success h4 {
+    color: #5cb85c;
+}
+.bs-callout-danger {
+    border-left-color: #d9534f;
+}
+.bs-callout-danger h4 {
+    color: #d9534f;
+}
+.bs-callout-warning {
+    border-left-color: #f0ad4e;
+}
+.bs-callout-warning h4 {
+    color: #f0ad4e;
+}
+.bs-callout-info {
+    border-left-color: #5bc0de;
+}
+.bs-callout-info h4 {
+    color: #5bc0de;
+}
+
+.urlField {
+  display: block;
+  width: 100%;
+  font-size: 17px;
+  padding: 4px;
+}
+
+#initBtn {
+  margin-bottom: 8px;
+}
+
+label {
+  display: block;
+}
+input {
+  margin-bottom: 4px;
+  width: 100%;
+}
+    </style>
+</head>
+<body>
+  <div id="mainDiv">
+    <h2>Centricient Add-In</h2>
+    <p>This is an add-in loaded in an iframe from a different site</p>
+
+    <div>
+      <label for="site">Site URL:</label>
+      <input id="site" type="text" value="https://osc1-qa.centricient.com" class="urlField">
+      <button id="initBtn" class="btn btn-success">Update Site</button>
+    </div>
+
+    <p>
+      <strong>UserId:</strong>
+      <span id="userId"></span>
+    </p>
+    <p>
+      <strong>TenantId:</strong>
+      <span id="tenantId"></span>
+    </p>
+
+    <div>
+      <button id="prepareHelloButton" class="btn btn-success">Prepare Hello Message</button>
+    </div>
+
+    <hr/>
+
+    <div style="margin-top:15px">
+      <div>
+        <label for="firstName">First Name</label>
+        <input id="firstNameField" name="firstName" type="text">
+      </div>
+
+      <div>
+        <label for="lastName">Last Name</label>
+        <input id="lastNameField" name="lastName" type="text">
+      </div>
+      <button id="updateContactBtn" class="btn btn-primary">Update contact info</button>
+    </div>
+
+    <hr/>
+
+    <div style="margin:7px 0">
+      <label for="sendOnSave">Send on save message</label>
+      <input id="sendOnCloseField" name="sendOnClose" type="text">
+      <button id="sendOnCloseButton" class="btn btn-success" style="display:block">
+        Send on save
+      </button>
+    </div>
+
+    <hr/>
+
+    <label for="data">External data</label>
+    <pre id="extensionData"></pre>
+    <input id="dataField" name="data" type="text">
+    <button id="setDataButton" class="btn btn-primary">Set external data</button>
+
+    <hr/>
+
+    <button id="fetchButton" class="btn btn-primary">Fetch Users</button>
+
+  </div>
+  <script type="text/javascript" src="sdk.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
