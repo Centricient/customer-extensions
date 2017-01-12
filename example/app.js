@@ -40,6 +40,7 @@ function callInit() {
   Centricient.init(url);
 }
 
+callInit();
 document.getElementById('initBtn').addEventListener('click', callInit);
 
 // Event listeners
