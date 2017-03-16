@@ -1,4 +1,4 @@
-Centricient Test AddIn
+Quiq Test AddIn
 ======================
 
 This is an example UI extension that covers the features described in

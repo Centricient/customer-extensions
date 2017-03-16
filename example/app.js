@@ -23,74 +23,74 @@ function addEventBlock(text, headerText, alertLevel) {
 function updateIdFields() {
   var userIdSpan = document.getElementById('userId');
   var tenantIdSpan = document.getElementById('tenantId');
-  userId.textContent = Centricient.getUserId();
-  tenantId.textContent = Centricient.getTenantId();
+  userId.textContent = Quiq.getUserId();
+  tenantId.textContent = Quiq.getTenantId();
 }
 
 function updateExtensionData() {
   var dataField = document.getElementById('extensionData');
 
   // Get current data
-  dataField.textContent = Centricient.getExtensionData();
+  dataField.textContent = Quiq.getExtensionData();
 }
 
 // Initialization
 function callInit() {
   const url = document.getElementById('site').value;
-  Centricient.init(url);
+  Quiq.init(url);
 }
 
 callInit();
 document.getElementById('initBtn').addEventListener('click', callInit);
 
 // Event listeners
-Centricient.on('init', function() {
+Quiq.on('init', function() {
   addEventBlock('AddIn loaded', null, 'success');
   updateIdFields();
   updateExtensionData();
 });
 
-Centricient.on('messageAdded', function(data) {
-  var totalMessages = Centricient.getConversation().messages.length;
+Quiq.on('messageAdded', function(data) {
+  var totalMessages = Quiq.getConversation().messages.length;
   addEventBlock(data.text + ' (' + totalMessages + ' total messages)', 'Message sent');
 });
 
-Centricient.on('messageReceived', function(data) {
+Quiq.on('messageReceived', function(data) {
   addEventBlock(data.message.text, 'Message received');
 })
 
-Centricient.on('collaborationMessageReceived', function(data) {
+Quiq.on('collaborationMessageReceived', function(data) {
   addEventBlock(data.message.text, 'Collaboration message received');
 })
 
-Centricient.on('conversationAccepted', function(data) {
+Quiq.on('conversationAccepted', function(data) {
   addEventBlock('Conversation accepted', null, 'success');
 });
 
-Centricient.on('conversationStatusChanged', function(data) {
+Quiq.on('conversationStatusChanged', function(data) {
   if (data.status === 'inactive') { addEventBlock('Conversation inactive', null, 'warning'); }
   if (data.status === 'active') { addEventBlock('Conversation became active', null, 'success'); }
 });
 
-Centricient.on('extensionDataChanged', updateExtensionData);
+Quiq.on('extensionDataChanged', updateExtensionData);
 
 document.getElementById('prepareHelloButton').addEventListener('click', function() {
-  Centricient.prepareMessage('Hello world');
+  Quiq.prepareMessage('Hello world');
 });
 
 document.getElementById('sendOnCloseButton').addEventListener('click', function() {
   var text = document.getElementById('sendOnCloseField').value;
-  Centricient.sendOnClose(text);
+  Quiq.sendOnClose(text);
 });
 
 document.getElementById('updateContactBtn').addEventListener('click', function() {
   var firstName = document.getElementById('firstNameField').value;
   var lastName = document.getElementById('lastNameField').value;
-  Centricient.updateContactDisplayName({firstName: firstName, lastName: lastName});
+  Quiq.updateContactDisplayName({firstName: firstName, lastName: lastName});
 })
 
 document.getElementById('fetchButton').addEventListener('click', function() {
-  Centricient.fetchUsers().then(function(data) {
+  Quiq.fetchUsers().then(function(data) {
     addEventBlock(JSON.stringify(data), null, 'success');
   });
 });
@@ -98,7 +98,7 @@ document.getElementById('fetchButton').addEventListener('click', function() {
 document.getElementById('setDataButton').addEventListener('click', function() {
   var newData = document.getElementById('dataField').value;
   var testObject = { textBoxContent: newData };
-  Centricient.setExtensionData(JSON.stringify(testObject)).then(updateExtensionData);
+  Quiq.setExtensionData(JSON.stringify(testObject)).then(updateExtensionData);
 });
 
 })()
