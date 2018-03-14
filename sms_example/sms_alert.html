@@ -1,0 +1,15 @@
+
+
+<html>
+  <head></head>
+
+  <script type="text/javascript">
+  function confirm_alert(node) {
+      return confirm("Please do not send any account or personal information in your text message.");
+  }
+  </script>
+
+  <h1>Quiq - SMS Sample - Warn User</h1>
+  <div>Show an alert to the end user when they click on an SMS link. If they cancel then the navigation is cancelled.</div>
+  <div><a href="sms:+16468878398" onclick="return confirm_alert(this);">Text us</a>
+</html>
